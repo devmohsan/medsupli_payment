@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding App - Payment</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #f9fafb, #e6f0f3);
+    }
+
+    .card-shadow {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    #card-element {
+      background: #fff;
+    }
+
+    .btn-light {
+      background-color: #F3C7BF;
+      transition: all 0.3s ease;
+    }
+
+    .btn-light:hover {
+      background-color: #eabdb0;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen p-4">
+  <div class="w-full max-w-md p-8 bg-white rounded-3xl card-shadow">
+    <h2 class="text-3xl font-extrabold text-gray-800 mb-4 text-center">💳 Complete Your Payment</h2>
+    <p class="text-center text-gray-600 mb-6">
+      Pay <span class="font-semibold text-pink-500 text-lg">$<%= amount %></span> for your booking
+    </p>
+
+    <form method="post" id="payment-form" class="space-y-5">
+      <!-- Amount -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+        <input type="text" name="amount" value="$<%= amount %>" readonly
+          class="w-full px-4 py-3 border border-gray-300 rounded-xl bg-gray-50 text-gray-800 font-medium" />
+      </div>
+
+      <!-- Card Input -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Card Details</label>
+        <div id="card-element"
+          class="p-4 border-2 border-gray-300 rounded-xl transition-all focus-within:border-pink-300"></div>
+        <div id="card-errors" class="text-red-500 text-sm mt-2"></div>
+      </div>
+
+      <!-- Hidden fields -->
+      <input type="hidden" name="userId" id="userId" value="<%= userId %>" />
+      <input type="hidden" name="bookingId" id="bookingId" value="<%= bookingId %>" />
+
+      <!-- Pay Now Button -->
+      <button type="submit"
+        class="w-full btn-light text-gray-900 font-bold py-4 px-4 rounded-2xl shadow-md flex items-center justify-center gap-3">
+        <i class="fas fa-credit-card"></i> Pay Now
+      </button>
+    </form>
+
+    <p class="text-center text-gray-500 text-sm mt-5">Secure payment powered by Stripe</p>
+  </div>
+
+  <script>
+    const stripe = Stripe('<%= publishableKey %>');
+    const elements = stripe.elements();
+    const card = elements.create('card', { hidePostalCode: true });
+    card.mount('#card-element');
+
+    const form = document.getElementById('payment-form');
+    const errorDiv = document.getElementById('card-errors');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      errorDiv.textContent = '';
+
+      const { token, error } = await stripe.createToken(card);
+
+      if (error) {
+        errorDiv.textContent = error.message;
+        return;
+      }
+
+      const payload = {
+        stripeToken: token.id,
+        amount: parseFloat(document.getElementById('amount')?.value || '<%= amount %>'),
+        userId: document.getElementById('userId').value,
+        bookingId: document.getElementById('bookingId').value
+      };
+
+      try {
+        const response = await fetch('/api/createCharges', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Payment Successful',
+            text: result.message || 'Your payment was processed successfully.',
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didClose: () => { location.href = "/success"; }
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Payment Failed',
+            text: result.message || 'Something went wrong. Please try again.',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Retry'
+          });
+        }
+
+      } catch (err) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Payment Error',
+          text: err.message,
+          confirmButtonColor: '#d33'
+        });
+      }
+    });
+  </script>
+</body>
+</html>

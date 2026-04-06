@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "itemology-app-for-ios-android",
+  "private_key_id": "081441ba719e4c16b6ce9a710f37d68f7235d1b2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDQkxvjnusVs/zb\nYTxRAR17YRHGG+UpPHAMUI4lGcdsWLa5rhH8h0c/aklq8Z7e6R2SPMK5Qe7wQHa3\nHDccaVRQ5G0QE5kU9IpgxzyvdYFeDtCz4WcsjwPjYIrRA90OG0i7D5pDvgkp4p9n\nSioIE2awoUixrqIKZKLigosa6Z2gacDw6ZSkckNE2vZ+oSZCUQk9bzkvqC44psQy\nY2oTu/XwcZg6Ett49wZzAF5XPRtN+WMtTjxGISlVKpQupMdg+yDftictAsFsARne\nVOpDSwKLnU7ZnGhmNQ4pY2C4pTULsqNLRJelNPLFCRzISjUP1pbT1jZPfYdv7irW\nKtI5mbLtAgMBAAECggEAJAoHO6FuBWYAPvfiMCz9JyByrcSMKD/lLHuO1CJMLxB1\nIkhNm1DUosR+wxfU17d4AJi3HMOjwaeh26noa+RXSVLu9WQtg01ty6MhfT/UhqgQ\nr8Q2y6A6j8NSuSLtw047lvbvNN1VQAOEf5h1Asg3ajW0Fd+S6DDTZEgiORg8wEa1\no+XqtCSLxjNrx/uC5yofZ5C1vDeW+SobUhwZTaFvrZOL0zKazwMnaUdF63yeV0fs\nAUVR1iANLg9Ouqto7kiFzSZs2NWd+LSHaMeH7ctWkZflyDfKH1iumzq6lcIHe2Io\nibfRyUtWKFAV1hPC1S/hRfwOFUtgdL5tCZd1mfOAgQKBgQD29feClaKZFhMY9Yhp\nDX2xPfxC338h2zl2gzWmjXfLNoW7EE6uWdbxPxUXT1YE9aCZqG5hIynnzxbkTlOg\nUAGXxvvhD173NsdX6nk1BVh0h1Ogxh2d9HB/9kTIubtJo/HC03q2C1INoGXfRsbe\nYGa+BucHUYDiyt0tw/VjQE7ktQKBgQDYNXZOmQBRDLUxSOi/UOzgaiacrbkG7BjV\nUg05IaYpHvJAqWUXeQ5lCloo2yyVq07bN0H9a87CmznUXT1EgeK+9Bly5OLYQxhM\nAXJA7CCS+B1ieen8G8xg5cYdXXynu9BXeSMNy4FtPookrg7B0gJfxDkm0rrFvQ4N\n+wxOqMlwWQKBgAw1jM7/5tH6rWcGfH/1Esm4bsg/lGFwHR8mzXg2dj2trF7bJ4in\nGGFE5R4J5g7Ite/iy9IxktjK/C69UJUUX3/Jbppp0CAYrTJDfUqJwR3Bsvi30q8E\nbqtk2XGy/PdfC4y+N8rYNG5IB8FKFnrX+TxbywApn12W+ehRT8hgXYYhAoGAS4cx\nkvdj4uxbh6H+nIa6mRK79lPBpSdo7WxCbkjQ8OB8pBYI2JBTdPyOzmLySj6Tx4Sg\nKtU0X0s2gncn5fyxpx9CnJ5UmFOn8zU2InPaVT0Tlskb8hQL63WZJbz4xOeZOlV4\n52LGDdGhFHsxcIfaiHXVuTg4QsduV3fxrrDL3dECgYEAgLG189zu02a0+Zwbkjlr\nV84Tq0fL2W5YXO+oxSYVnKnDkAWqrreJIp+6JXDDDpDgpSJ0WWHeBSP/kiOy6tjj\nP3erLw61Fc/r61tjjABXfE17Q3IYi/StyzfN/i1giZ64hhBAbjDFS7UPemzXQzQG\ny07vZkAD4fLp4EGwyT8Wo7I=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@itemology-app-for-ios-android.iam.gserviceaccount.com",
+  "client_id": "112818194393410080008",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40itemology-app-for-ios-android.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
